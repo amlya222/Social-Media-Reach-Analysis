@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Social Media Reach Analysis</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="logo">Reach Analysis</div>
+        <div class="nav-group">
+          <button class="nav-btn active" data-page="dashboardPage">Dashboard</button>
+          <button class="nav-btn" data-page="analyticsPage">Analytics</button>
+          <button class="nav-btn" data-page="engagementPage">Engagement</button>
+          <button class="nav-btn" data-page="reachInsightsPage">Reach Insights</button>
+          <button class="nav-btn" data-page="topPostsPage">Top Posts</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="pageSubtitle">Social Media Reach Analysis</p>
+            <h1 id="pageTitle">Enterprise Dashboard</h1>
+          </div>
+        </header>
+
+        <div class="page-content">
+          <section id="dashboardPage" class="page active">
+            <section class="filter-bar">
+              <div class="filter-pill">Last 30 Days</div>
+              <div class="filter-controls">
+                <label class="filter-field">
+                  Platform
+                  <select id="platformFilter">
+                    <option value="">All Platforms</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  Post Type
+                  <select id="typeFilter">
+                    <option value="">All Types</option>
+                  </select>
+                </label>
+              </div>
+              <div class="updated-text">Last updated: <strong>5 mins ago</strong></div>
+            </section>
+
+            <section class="metric-cards" id="metricCards"></section>
+
+            <section class="dashboard-grid">
+              <section class="panel large-panel">
+                <div class="panel-header">
+                  <div>
+                    <h2>Reach over Time</h2>
+                    <p>Aggregated performance across all channels</p>
+                  </div>
+                  <button class="small-button">...</button>
+                </div>
+                <canvas id="reachChart"></canvas>
+              </section>
+
+              <aside class="side-panel">
+                <div class="insights-card">
+                  <div class="insights-title">AI Reach Insights</div>
+                  <p>Intelligent suggestions for boost.</p>
+                  <div class="insight-stat">
+                    <span>Best Posting Time</span>
+                    <strong id="bestHour">--</strong>
+                  </div>
+                  <div class="insight-subtext">Based on the most active posting hour</div>
+                  <div class="insight-stat">
+                    <span>Top Hashtag</span>
+                    <strong id="topHashtag">--</strong>
+                  </div>
+                  <div class="insight-stat">
+                    <span>Viral Posts</span>
+                    <strong id="viralCount">0</strong>
+                  </div>
+                </div>
+              </aside>
+            </section>
+
+            <section class="dashboard-grid small-panels">
+              <div class="panel small-panel">
+                <h3>Likes vs Comments</h3>
+                <canvas id="likesCommentsChart"></canvas>
+              </div>
+              <div class="panel small-panel">
+                <h3>Posting Time Performance</h3>
+                <canvas id="heatmapCanvas"></canvas>
+              </div>
+              <div class="panel donut-panel">
+                <div class="panel-header"><h3>Post Distribution</h3></div>
+                <canvas id="distributionChart"></canvas>
+              </div>
+            </section>
+
+            <section class="dashboard-grid bottom-panels">
+              <section class="panel small-panel">
+                <h3>Channel Split</h3>
+                <div id="channelSplit" class="channel-split"></div>
+              </section>
+              <section class="panel large-panel">
+                <div class="table-header">
+                  <h3>Top Performing Posts</h3>
+                  <a href="#">View Full Report</a>
+                </div>
+                <table class="posts-table" id="topPostsTable">
+                  <thead>
+                    <tr><th>Post ID</th><th>Platform</th><th>Reach</th><th>Likes</th><th>Eng. Rate</th><th>Type</th></tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </section>
+            </section>
+          </section>
+
+          <section id="analyticsPage" class="page">
+            <div class="section-header">
+              <h2>Analytics</h2>
+              <p>Detailed channel and content analytics across your dataset.</p>
+            </div>
+            <section class="metric-cards" id="analyticsMetrics"></section>
+            <section class="dashboard-grid analytics-grid">
+              <div class="panel small-panel">
+                <div class="panel-header"><h3>Platform Reach</h3></div>
+                <canvas id="platformReachChart"></canvas>
+              </div>
+              <div class="panel small-panel">
+                <div class="panel-header"><h3>Content Type Breakdown</h3></div>
+                <canvas id="typeBreakdownChart"></canvas>
+              </div>
+            </section>
+          </section>
+
+          <section id="engagementPage" class="page">
+            <div class="section-header">
+              <h2>Engagement</h2>
+              <p>Track post engagement and identify top performing content.</p>
+            </div>
+            <section class="dashboard-grid small-panels">
+              <div class="panel large-panel">
+                <h3>Engagement Trend</h3>
+                <canvas id="engagementTrendChart"></canvas>
+              </div>
+              <div class="panel large-panel">
+                <div class="panel-header"><h3>Top Engaging Posts</h3></div>
+                <table class="posts-table" id="engagementTable">
+                  <thead><tr><th>Post ID</th><th>Platform</th><th>Eng. Rate</th><th>Likes</th><th>Comments</th></tr></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </section>
+          </section>
+
+          <section id="reachInsightsPage" class="page">
+            <div class="section-header">
+              <h2>Reach Insights</h2>
+              <p>Actionable recommendations and reach opportunities.</p>
+            </div>
+            <section class="dashboard-grid small-panels">
+              <div class="panel small-panel">
+                <h3>Top Hashtags</h3>
+                <ul id="hashtagList" class="insight-list"></ul>
+              </div>
+              <div class="panel small-panel">
+                <h3>Channel Reach Growth</h3>
+                <canvas id="reachGrowthChart"></canvas>
+              </div>
+              <div class="panel small-panel">
+                <h3>Viral Content</h3>
+                <ul id="viralPostsList" class="insight-list"></ul>
+              </div>
+            </section>
+          </section>
+
+          <section id="topPostsPage" class="page">
+            <div class="section-header">
+              <h2>Top Posts</h2>
+              <p>Review the highest performing posts by reach and engagement.</p>
+            </div>
+            <div class="panel large-panel">
+              <table class="posts-table" id="allTopPostsTable">
+                <thead><tr><th>Post ID</th><th>Platform</th><th>Type</th><th>Reach</th><th>Likes</th><th>Comments</th><th>Shares</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </section>
+
+        </div>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
