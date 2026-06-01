@@ -1,6 +1,12 @@
 # Social Media Reach Analysis
 
 A lightweight analytics dashboard built with Flask and vanilla HTML/CSS/JavaScript to visualize social media performance from a local CSV dataset.
+<img width="1899" height="866" alt="image" src="https://github.com/user-attachments/assets/f0212967-9934-42fd-a365-8fba769aca28" />
+<img width="1882" height="865" alt="image" src="https://github.com/user-attachments/assets/69af4d67-940f-47df-a648-c98b141450eb" />
+<img width="1885" height="858" alt="image" src="https://github.com/user-attachments/assets/8b5ad208-a971-4772-b484-e83748820e94" />
+<img width="1896" height="833" alt="image" src="https://github.com/user-attachments/assets/bacc0a47-e023-48ec-8b7a-1f2469ba2aae" />
+<img width="1902" height="828" alt="image" src="https://github.com/user-attachments/assets/0f87fab8-e772-41fe-ad1c-6206135deec3" />
+<img width="1900" height="828" alt="image" src="https://github.com/user-attachments/assets/9f9fa5d3-c561-46a4-964a-9c8b0b8d192b" />
 
 ## Features
 
